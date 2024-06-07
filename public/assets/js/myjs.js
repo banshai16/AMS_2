@@ -59,7 +59,7 @@ $(document).ready(function()
           row.append('<th scope="row" style="display: none;">' + item.id + '</th>');
           row.append('<td>' + rowid + '</td>');
           row.append('<td>' + item.link_type + '</td>');
-          row.append('<td><button type="submit" class="edit_link btn btn-info" value="' + item.id + '">Update</button></td>');
+          row.append('<td><button type="submit" class="edit_link_type btn btn-info" value="' + item.id + '">Update</button></td>');
           row.append('<td><button type="button" class=" delete_link btn btn-danger" value="' + item.id + '">Delete</button></td>');
           tableBody.append(row);
           rowid++;
@@ -818,6 +818,82 @@ $(document).ready(function()
   })
 
   //Editing of the Link type starts here
+  $(document).on('click','.edit_link_type', function(e)
+  {
+    e.preventDefault();
+    var id = $(this).val();
+    $('#edit_link_type_modal').modal('show');
+    $.ajax(
+    {
+      url: 'edit_link_type',
+      type: 'GET',
+      data: {
+        'id' : id
+      },
+      success: function(response)
+      {
+        if(response)
+        {
+          $('#id').val(response.link_type.id);
+          $('#edit_link_type').attr('placeholder', response.link_type.link_type);
 
-
+        }
+        else
+        {
+          swal('Error', 'No data found for this lease line', 'error');
+        }
+      },
+      error: function(response)
+      {
+        swal('Not Found', response.error,'error');
+      }
+    });
+  })
 });
+
+ //This is for updating the link type
+  $(document).on('click','#update_link_type',function(e)
+  {
+    e.preventDefault();
+    var id = $('#id').val();
+    var lt = $('#edit_link_type').val();
+    $.ajax({
+      url: 'update_link_type',
+      type: 'POST',
+      data: {
+        'idkey': id,
+        'ltkey': lt,
+      },
+      success: function(response)
+      {
+        if(response)
+        {
+          setTimeout(function()
+          {
+            location.reload();
+            window.location.href = "link"; // Replace with the URL you want to redirect to
+          }, 2000); // 2000 milliseconds = 2 seconds
+          swal("Success!!",response.success,"success");
+        }
+      },
+     error:function(xhr, status, error)
+        {
+          if(xhr.status===422)
+          {
+            // Extract the validation errors from the response JSON
+            var errors = xhr.responseJSON.errors;
+
+            // Display the first error message for each field
+            $.each(errors, function(field, messages)
+            {
+              swal("Error!", messages[0], "error");
+            });
+          }
+          else
+          {
+            // Display a generic error message
+            swal("Oops!", "An unexpected error occurred. Please try again later.", "error");
+          }
+        }
+    });
+  })

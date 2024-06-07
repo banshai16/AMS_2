@@ -69,5 +69,51 @@ class LinkController extends Controller
             return response()->json(['error' => 'Item not found'], 404);
         }
     }
+
+    public function edit_link_type(Request $request)
+    {
+        $id = $request->input('id');
+        $link_type = Links::findOrFail($id);
+        if($link_type)
+        {
+            return response()->json([
+                'link_type' => $link_type,
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'error' => 'Item is not available',
+            ]);
+        }
+    }
+
+    public function update_link_type(Request $request)
+    {
+        $id = $request->input('idkey');
+        $validateData = $request->validate([
+            'ltkey' => 'required|string',
+        ]);
+        if($id)
+        {
+            $link_type = Links::findOrFail($id);
+            if($link_type)
+            {
+                $link_type->link_type = $validateData['ltkey'];
+                $link_type->save();
+
+                return response()->json([
+                'success' => 'Data updated successfully',
+                ]);
+            }
+        }
+        else
+        {
+             return response()->json([
+            'Not found' => 'Data not found',
+            ]);
+        }
+       
+    }
 }
 

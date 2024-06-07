@@ -37,18 +37,13 @@ Route::get('/home', [HomeController::class, 'home_view'])->name('home.view');
 
 Route::get('/home', [HomeController::class, 'show_user'])->name('show_user');
 
+// -------------------------------- For Link Type---------------------------------------------
 
 Route::get('/link',[LinkController::class, 'link_view'])->name('link.view');
 
 Route::get('/link_fetch', [LinkController::class, 'link_fetch'])->name('link_fetch');// getting the data to display in the table
 
 Route::post('link_store', [LinkController::class, 'link_store'])->name('link_store'); //storing the link data to the database
-
-Route::get('/network', [NetworkController::class, 'network_view'])->name('network.view');
-
-Route::get('/network_fetch', [NetworkController::class, 'network_fetch'])->name('network_fetch');//fetching the data to display to the table
-
-Route::post('/network_store', [NetworkController::class, 'network_store'])->name('network_store');//storing the data in the network table
 
 Route::get('/fetch_link_type', [NetworkController::class, 'fetch_link_type'])->name('fetch_link_type');//drop down for link type in network blade for modal
 
@@ -60,9 +55,20 @@ Route::get('/fetch_lease_line_modal', [NetworkController::class, 'fetch_lease_li
 
 Route::get('delete_link',[LinkController::class, 'delete_link'])->name('delete_link');
 
-Route::get('delete_network',[NetworkController::class, 'delete_network'])->name('delete_network');
+Route::get('/edit_link_type',[LinkController::class, 'edit_link_type'])->name('edit_link_type');
 
-Route::put('/update_link',[LinkController::class, 'update_link'])->name('update_link');
+Route::post('/update_link_type',[LinkController::class, 'update_link_type'])->name('update_link_type');
+
+
+// --------------------------------------For Network------------------------------------------
+
+Route::get('/network', [NetworkController::class, 'network_view'])->name('network.view');
+
+Route::get('/network_fetch', [NetworkController::class, 'network_fetch'])->name('network_fetch');//fetching the data to display to the table
+
+Route::post('/network_store', [NetworkController::class, 'network_store'])->name('network_store');//storing the data in the network table
+
+Route::get('delete_network',[NetworkController::class, 'delete_network'])->name('delete_network');
 
 Route::get('/edit_network',[NetworkController::class, 'edit_network'])->name('edit_network');
 
@@ -78,7 +84,7 @@ Route::get('/view_network_form', [NetworkController::class, 'view_network_form']
 
 Route::get('/view_network',[NetworkController::class, 'view_network'])->name('view_network');
 
-// ---------------------For Lease Line------------------------
+// -------------------------------------For Lease Line------------------------------------------
 
 Route::get('/lease_line_provider_view',[LeaselineController::class, 'lease_line_provider_view'])->name('lease_line_provider_view');
 
@@ -91,5 +97,7 @@ Route::get('/delete_lease_line', [LeaselineController::class, 'delete_lease_line
 Route::get('/edit_lease_line', [LeaselineController::class, 'edit_lease_line'])->name('edit_lease_line');
 
 Route::post('/update_lease_line', [LeaselineController::class, 'update_lease_line'])->name('update_lease_line');
+
+// -----------------------------------------For Website--------------------------------------------
 
 Route::get('/website_index', [WebsiteController::class, 'website_index'])->name('website_index');
