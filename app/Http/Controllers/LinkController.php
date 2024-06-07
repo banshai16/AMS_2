@@ -90,13 +90,13 @@ class LinkController extends Controller
 
     public function update_link_type(Request $request)
     {
-        $id = $request->input('idkey');
+        $id = $request->input('idlt');
         $validateData = $request->validate([
             'ltkey' => 'required|string',
         ]);
         if($id)
         {
-            $link_type = Links::findOrFail($id);
+            $link_type = Links::find($id);
             if($link_type)
             {
                 $link_type->link_type = $validateData['ltkey'];

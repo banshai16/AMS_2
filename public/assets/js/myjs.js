@@ -861,7 +861,7 @@ $(document).ready(function()
       url: 'update_link_type',
       type: 'POST',
       data: {
-        'idkey': id,
+        'idlt': id,
         'ltkey': lt,
       },
       success: function(response)
