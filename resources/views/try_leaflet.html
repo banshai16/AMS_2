@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meghalaya Map</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet-boundary-canvas"></script>
+
+    <style>
+        #map {
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map focusing on Meghalaya
+        var mapOptions = {
+            center: [25.4670, 91.3662], // Centered on Meghalaya
+            zoom: 9, // Zoom level adjusted for Meghalaya
+            zoomControl: false, // Disable zoom control
+            dragging: false, // Disable dragging
+            scrollWheelZoom: false, // Disable scroll wheel zoom
+            doubleClickZoom: false // Disable double-click zoom
+        };
+        var map = L.map('map', mapOptions);
+
+        // Add a tile layer for Meghalaya
+        var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+        tileLayer.addTo(map);
+          // GeoJSON data for Meghalaya's boundary
+        var meghalayaBoundaryGeoJSON = {
+            "type": "FeatureCollection",
+            "features": [
+                // Add GeoJSON feature representing Meghalaya's boundary
+            ]
+        };
+
+        // Add Meghalaya's boundary to the map using Leaflet.BoundaryCanvas
+        L.boundaryCanvas(meghalayaBoundaryGeoJSON, {
+            color: 'black', // Boundary color
+            weight: 80 // Boundary line weight
+        }).addTo(map);
+    </script>
+</body>
+</html>
+<script>
+        // Initialize the map focusing on Meghalaya
+        var mapOptions = {
+            center: [25.4670, 91.3662], // Centered on Meghalaya
+            zoom: 9, // Zoom level adjusted for Meghalaya
+            zoomControl: false, // Disable zoom control
+            dragging: false, // Disable dragging
+            scrollWheelZoom: false, // Disable scroll wheel zoom
+            doubleClickZoom: false // Disable double-click zoom
+        };
+        var map = L.map('map', mapOptions);
+
+        // Add a tile layer for Meghalaya
+        var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+        tileLayer.addTo(map);
+    </script>

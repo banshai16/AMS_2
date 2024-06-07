@@ -1,0 +1,66 @@
+/* styles.css */
+body {
+    background-image: url("/assests/image/login_background.png"); /* Path to your background image */
+    background-size: cover; /* Cover the entire viewport */
+    /* background-position: center; Center the background image */
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #register{
+    height:500px;
+  }
+  .card {
+    width: 500px; /* Adjust width as needed */
+    border: 2px solid #d559596c; /* Border style */
+    border-radius: 40px;
+    height: 400px;
+    background-color: #e46161;
+  }
+  
+  .card-title {
+    background-color: rgb(0, 149, 255); /* Red */
+    color: #fff;
+    font-family: Marker Felt, fantasy;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 0;
+    background-image: repeating-linear-gradient(223deg, rgba(255,255,255, 0.25), rgba(255,255,255, 0.25) 1px, transparent 0px, transparent 2px);
+    background-size: 20px;
+  }
+  
+  .card-body {
+    padding: 50px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control{
+    font-family: FreeMono, monospace;
+
+  }
+
+  .form-control:focus {
+    border-color: #007bff;
+    transition-timing-function: 1s;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .form-group.text-center {
+    margin-bottom: 0;
+  }
+  
+  .btn-primary {
+    transition: background-color 1s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 0 10px 16px rgb(0, 0, 0); /* Darker box shadow on hover */
+
+  }
